@@ -95,6 +95,8 @@ class ContactHelper {
 
 class Contact {
 
+  Contact();
+
   int id;
   String name;
   String email;
