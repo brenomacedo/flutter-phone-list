@@ -23,6 +23,8 @@ class _ContactPageState extends State<ContactPage> {
 
   bool _userEdited = false;
 
+  final _nameFocus = FocusNode();
+
   @override
   void initState() {
     super.initState();
@@ -49,7 +51,13 @@ class _ContactPageState extends State<ContactPage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.save),
         backgroundColor: Colors.red,
-        onPressed: () {},
+        onPressed: () {
+          if(_editedContact.name.isNotEmpty && _editedContact.name != null) {
+            Navigator.pop(context, _editedContact);
+          } else {
+            FocusScope.of(context).requestFocus(_nameFocus);
+          }
+        },
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10.0),
@@ -74,6 +82,7 @@ class _ContactPageState extends State<ContactPage> {
               decoration: InputDecoration(
                 labelText: "Nome"
               ),
+              focusNode: _nameFocus,
               onChanged: (val) {
                 _userEdited = true;
                 setState(() {
