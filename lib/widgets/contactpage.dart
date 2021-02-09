@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:phone_list/helpers/contact_helper.dart';
 
+enum OrderOptions {orderaz, orderza}
+
 class ContactPage extends StatefulWidget {
 
   final Contact contact;
